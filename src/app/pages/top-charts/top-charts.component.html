@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Graficas</h1>
+  </div>
+  
+<p>Las siguientes graficas muestran un rango de usuario, evaluando los followers que tiene cada uno de ellos</p><br>
+<app-chart *ngIf="estado"
+ [labels]="followers[0]"
+ [data]="followers[1]">
+</app-chart>

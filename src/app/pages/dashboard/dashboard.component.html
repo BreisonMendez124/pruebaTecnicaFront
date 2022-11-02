@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Dashboard</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6 bg-light text-dark  p-3">
+    <p>Buscar usuario:</p>
+    <section class="col-md-8">
+       <label for="userName" class="form-label">Nombre de usuario:</label>
+       <input type="text" [(ngModel)]="valueFileUserName" class="form-control" id="userName" aria-describedby="userNameHelp" [ngClass]="{'is-invalid': valueFileUserName.length <= 4}" >
+       <div id="userNameHelp" class="form-text" [ngClass]="{'d-none': valueFileUserName.length >= 4}">El valor debe ser minimo de 4 caracteres</div>
+    </section>
+    <section class="col-md-8 mt-2">
+      <button class="btn btn-primary" (click)="getUser()">Buscar usuario</button>    
+    </section>
+  </div>
+</div>
+
+
+<div class="album py-5" *ngIf="estado">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col"  *ngFor="let user of users">
+        <div class="card shadow-sm">
+          <img src="{{user.avatar_url}}" w="100">
+          <div class="card-body">
+            <p class="card-text">
+              <strong>Nombre usuario: </strong>{{user.login}}<br>
+              <strong>Descripcion: </strong>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus 
+              posuere elementum justo, quis dapibus dui vehicula et. Integer ornare sem felis, 
+              eget rutrum ex tristique ut. Vestibulum at turpis sed dolor vehicula dignissim.
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button"  class="btn btn-sm btn-outline-secondary"
+                        [routerLink]="['userPage', user.id]">
+                          View
+                </button>
+              </div>
+              <small class="text-muted">{{user.score}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-alerts *ngIf="!estado">
+</app-alerts>
+
+
